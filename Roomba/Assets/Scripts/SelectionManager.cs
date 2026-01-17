@@ -44,7 +44,7 @@ public class SelectionManager : MonoBehaviour
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    private void OnPrevious()
+    public void OnPrevious()
     {
         // Deselect current smart obj
         _currentSmartObject.SetSelected(false);
@@ -65,7 +65,7 @@ public class SelectionManager : MonoBehaviour
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    private void OnNext()
+    public void OnNext()
     {
         // Deselect current smart obj
         _currentSmartObject.SetSelected(false);
