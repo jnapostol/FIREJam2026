@@ -15,8 +15,12 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody _rb;
 
-    bool _canMove = true;
-    Coroutine _canMoveCoroutine;
+    bool _canMove = false;
+
+    [Header("Broken State Stuff")]
+    bool _isBroken = true;
+    [SerializeField] GameObject _screen;
+    Coroutine _flickerCoroutine;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +28,14 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _canMove = false;
+
+        //broken stuff
+        _isBroken = true;
+        if (_screen != null)
+        {
+            _flickerCoroutine = StartCoroutine(Flicker(_screen, false));
+        }
+        
     }
 
     // Update is called once per frame
@@ -55,9 +67,40 @@ public class PlayerController : MonoBehaviour
         {
             _canMove = false;
         }
-        Debug.Log($"movement vector: {_movementVector}");
-
 
         _movementVector = ctx.ReadValue<Vector2>();        
+    }
+
+    /// <summary>
+    /// Turns on and off the screen object at random intervals indefinitely
+    /// </summary>
+    /// <param name="screen"></param>
+    /// <param name="even"></param>
+    /// <returns></returns>
+    IEnumerator Flicker(GameObject screen, bool even)
+    {
+        if (screen.activeInHierarchy)
+        {
+            screen.SetActive(false);
+        } else
+        {
+            screen.SetActive(true);
+        }
+        float delay;
+        if (even)
+        {
+            delay = Random.Range(0.1f, 5f);
+        } else
+        {
+            delay = Random.Range(0.1f, 0.3f);
+        }
+            
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(Flicker(screen, !even));
+    }
+
+    void FixRobot()
+    {
+        StopCoroutine(_flickerCoroutine);
     }
 }
