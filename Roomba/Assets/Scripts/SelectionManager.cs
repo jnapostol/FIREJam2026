@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    // repopulate selection manager array when they enter a trigger
+    // TODO: NEED TO CREATE PLAYER ACTION TO NAVIGATE UI INTERFACE
 
     [SerializeField] private SmartObject _currentSmartObject;
-
     [SerializeField] private List<SmartObject> _selectableSmartObjects;
-
-    public static SelectionManager Instance;
     [SerializeField] private int _index = 0;
+
     private void Start()
     {
         // Select the first obj in the smart obj list
