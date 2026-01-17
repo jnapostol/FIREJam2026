@@ -71,6 +71,11 @@ public class PlayerController : MonoBehaviour
     {
         //TO DO: check gameManager's selectionmanager to get selected status
 
+        if (SelectionManager.Instance.HasUISelected())
+        {
+            return;
+        }
+
         _canMove = true;
         if (ctx.canceled)
         {

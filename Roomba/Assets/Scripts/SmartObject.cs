@@ -7,6 +7,7 @@ public class SmartObject : MonoBehaviour
     [SerializeField] private UnityEvent _onSelected;
     [SerializeField] private UnityEvent _onDeselect;
     [SerializeField] private GameObject _arrow;
+    [SerializeField] private bool _hasUI;
     private bool _selected;
     private Renderer _renderer;
 
@@ -15,6 +16,8 @@ public class SmartObject : MonoBehaviour
         _renderer = GetComponent<MeshRenderer>();
     }
  
+    public bool HasUI() {  return _hasUI; }
+
     /// <summary>
     /// Called by the SelectionManager upon pressing LB RB
     /// </summary>
