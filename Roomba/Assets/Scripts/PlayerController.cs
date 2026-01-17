@@ -96,13 +96,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ShootThrowable()
     {
-        // Get throwable from stack
-        // Exclude player layermask on throwable rb
-        // Instantiate throwable under launchpoint
-        // Set spawned obj pos to launchpoint pos
-        // Add impulse force
-        // Remove from stack
-
         if (InventoryManager.Instance.HasThrowable() == false)
         {
             return;
@@ -114,6 +107,7 @@ public class PlayerController : MonoBehaviour
         throwable.transform.position = _launchPoint.transform.position;
         throwable.GetComponent<Rigidbody>().AddForce(transform.forward * _shootForce, ForceMode.Impulse);
 
+        // Reset collisions and visual UI
         StartCoroutine(WaitABit(throwable));
     }
 

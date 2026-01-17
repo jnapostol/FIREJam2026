@@ -34,6 +34,7 @@ public class Collectable : MonoBehaviour
                 else
                 {
                     _isAttached = true;
+                    _col.isTrigger = false;
                     SendAttachment();
                 }
             }

@@ -16,7 +16,6 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
         _playerMask = LayerMask.GetMask("Player");
         _throwableMask = LayerMask.GetMask("Throwable");
-
     }
 
     /// <summary>
@@ -44,9 +43,12 @@ public class InventoryManager : MonoBehaviour
     public Collectable PopThrowable()
     {
         return _throwables.Pop();
-        //return _throwables.Peek();
     }
 
+    /// <summary>
+    /// Checks if inventory has throwables
+    /// </summary>
+    /// <returns></returns>
     public bool HasThrowable()
     {
         if (_throwables.Count > 0)
@@ -75,7 +77,6 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 2; i < _throwables.Count; i++)
         {
-            Debug.Log("updating visual after pop");
             throwArr[i].gameObject.transform.position = new Vector3(throwArr[i].gameObject.transform.position.x, _spawnpoint.transform.position.y + 1.5f * throwArr.Length, throwArr[i].gameObject.transform.position.z);
         }
     }
@@ -86,11 +87,24 @@ public class InventoryManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Called by trigger volumes and when player collides with another attachment
+    /// </summary>
+    public void RemoveCurrentAttachment()
+    {
+        Destroy(_currentAttachment.gameObject);
+        _currentAttachment = null;
+    }
+
+    /// <summary>
     /// Called by Collectable to update inventory manager's current attachment
     /// </summary>
     /// <param name="attachment"></param>
     public void SetCurrentAttachment(Collectable attachment)
     {
+        if (_currentAttachment != null)
+        {
+            RemoveCurrentAttachment();
+        }
         _currentAttachment = attachment;
         _currentAttachment.gameObject.transform.parent = _attachmentPoint;
         _currentAttachment.gameObject.transform.localPosition = Vector3.zero;
