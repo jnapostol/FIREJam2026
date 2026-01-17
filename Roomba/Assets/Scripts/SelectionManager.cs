@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 public class SelectionManager : MonoBehaviour
 {
-    // TODO: NEED TO CREATE PLAYER ACTION TO NAVIGATE UI INTERFACE
-
     [SerializeField] private SmartObject _currentSmartObject;
     [SerializeField] private List<SmartObject> _selectableSmartObjects;
     [SerializeField] private int _index = 0;

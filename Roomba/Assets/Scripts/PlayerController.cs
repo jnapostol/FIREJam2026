@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Vector2 _movementVector;
+    [SerializeField] Animator _animator;
     [SerializeField] float _rotateSpeed;
     [SerializeField] float _movementSpeed;
     [SerializeField] float _northYRotation;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _launchPoint;
 
     Rigidbody _rb;
+
+
 
     bool _canMove = false;
 
@@ -152,17 +155,57 @@ public class PlayerController : MonoBehaviour
         }
             
         yield return new WaitForSeconds(delay);
-        StartCoroutine(Flicker(screen, !even));
+        _flickerCoroutine = StartCoroutine(Flicker(screen, !even));
     }
 
-    void FixRobot()
+    public void GiveBatteryToRobot()
     {
+        SetBatteryTrue();
         StopCoroutine(_flickerCoroutine);
+        StartCoroutine(ShowFullBattery());
+    }
+
+    public void SetBatteryTrue()
+    {
+        _hasBattery = true;
+    }
+
+    public void SetBandAidTrue()
+    {
+        _hasBandAid = true;
+    }
+
+    IEnumerator ShowFullBattery()
+    {
+        if (_animator != null)
+        {
+            _animator.Play("FullBat");
+        }
+        yield return new WaitForSeconds(2.5f);
+        if (_animator != null)
+        {
+            if (_hasBandAid)
+            {
+                _animator.Play("Happy");
+            }
+            else
+            {
+                _animator.Play("Idle");
+            }
+                
+        }
+    }
+
+    public void GiveBandaidToRobot()
+    {
         if (_brokenModel != null && _fixedModel != null)
         {
             _brokenModel.SetActive(false);
             _fixedModel.SetActive(true);
-
+            if (_hasBandAid && _hasBattery)
+            {
+                _animator.Play("Happy");
+            }
         }
     }
 }
