@@ -8,11 +8,13 @@ public class SmartObject : MonoBehaviour
     [SerializeField] private UnityEvent _onDeselect;
     [SerializeField] private GameObject _arrow;
     [SerializeField] private bool _hasUI;
+    [SerializeField] private Renderer _renderer;
     private bool _selected;
-    private Renderer _renderer;
 
     private void Awake()
     {
+        if (this.gameObject.CompareTag("Player")) return;
+        
         _renderer = GetComponent<MeshRenderer>();
     }
  
@@ -52,13 +54,28 @@ public class SmartObject : MonoBehaviour
         {
             // Turn on outline
             _arrow.SetActive(true);
-            _renderer.materials[1].SetFloat("_Scale", 1.1f);
+
+            if (_renderer.materials.Length == 1)
+            {
+                _renderer.materials[0].SetFloat("_Scale", 1.1f);
+            }
+            else
+            {
+                _renderer.materials[1].SetFloat("_Scale", 1.1f);
+            }
         }
         else
         {
             // Turn off outline
             _arrow.SetActive(false);
-            _renderer.materials[1].SetFloat("_Scale", 0f);
+            if (_renderer.materials.Length == 1)
+            {
+                _renderer.materials[0].SetFloat("_Scale", 0f);
+            }
+            else
+            {
+                _renderer.materials[1].SetFloat("_Scale", 0f);
+            }
         }
     }
 }
