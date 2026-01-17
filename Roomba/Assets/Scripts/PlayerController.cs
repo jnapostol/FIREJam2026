@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody _rb;
 
+    bool _canMove = true;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,22 +26,23 @@ public class PlayerController : MonoBehaviour
     {
         //TODO: if selected connect the input otherwise disable it
         float signedAngle = Vector2.SignedAngle(_movementVector, Vector2.up) + _northYRotation; //offset this by the rotation
-        float currentYRot = transform.rotation.eulerAngles.y - 180 + _northYRotation;
-        if (currentYRot > signedAngle + 1.5 || currentYRot < signedAngle - 1.5) //if not in the tight range of target angle, keep rotating
+        //float currentYRot = transform.rotation.eulerAngles.y - 180 + _northYRotation;
+        
+        Quaternion desiredQuat = Quaternion.Euler(0, signedAngle, 0);
+        //Debug.Log($"Y: {transform.rotation.y}. desiredY: {desiredQuat.y}");
+        if (transform.rotation.y > desiredQuat.y + 0.02 || transform.rotation.y < desiredQuat.y - 0.02) //if not in the tight range of target angle, keep rotating
         {
-            Quaternion desiredQuat = Quaternion.Euler(0, signedAngle, 0);
             var step = _rotateSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredQuat, step);
         } else //if looking in the right direction and canmove, move forward
         {
-            Debug.Log("attempting to +force");
             _rb.AddForce(transform.forward * _movementSpeed);
-            Debug.Log("adding force");
         }
     }
     void OnMove(InputValue inputValue)
     {
-        //TO DO: check if selected before doing anything else
+        //TO DO: check gameManager's selectionmanager to get selected status
+
         _movementVector = inputValue.Get<Vector2>();
         
         
