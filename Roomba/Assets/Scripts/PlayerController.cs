@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using NUnit.Framework.Internal.Commands;
 using System.Collections;
 using System.Security.Cryptography;
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _rotateSpeed;
     [SerializeField] float _movementSpeed;
     [SerializeField] float _northYRotation;
+    [SerializeField] float _shootForce;
+    [SerializeField] Transform _launchPoint;
 
     Rigidbody _rb;
 
@@ -25,8 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _brokenModel;
     [SerializeField] GameObject _fixedModel;
     Coroutine _flickerCoroutine;
+    private LayerMask _playerMask;
 
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +42,8 @@ public class PlayerController : MonoBehaviour
         {
             _flickerCoroutine = StartCoroutine(Flicker(_screen, false));
         }
-        
+
+        _playerMask = LayerMask.GetMask("Player");
     }
 
     // Update is called once per frame
@@ -62,6 +66,7 @@ public class PlayerController : MonoBehaviour
             _rb.AddForce(transform.forward * _movementSpeed);
         }
     }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         //TO DO: check gameManager's selectionmanager to get selected status
@@ -73,6 +78,56 @@ public class PlayerController : MonoBehaviour
         }
 
         _movementVector = ctx.ReadValue<Vector2>();        
+    }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (InventoryManager.Instance.HasThrowable() == false) { return; }
+
+        if (ctx.performed)
+        {
+            ShootThrowable();
+        }
+
+    }
+
+    /// <summary>
+    /// Gets throwable from stack and shoots it out from player with collisions accounted for
+    /// </summary>
+    private void ShootThrowable()
+    {
+        // Get throwable from stack
+        // Exclude player layermask on throwable rb
+        // Instantiate throwable under launchpoint
+        // Set spawned obj pos to launchpoint pos
+        // Add impulse force
+        // Remove from stack
+
+        if (InventoryManager.Instance.HasThrowable() == false)
+        {
+            return;
+        }
+
+        // Pop throwable from stack then throw it
+        Collectable throwable = InventoryManager.Instance.PopThrowable();
+        throwable.GetComponent<Rigidbody>().excludeLayers = _playerMask;
+        throwable.transform.position = _launchPoint.transform.position;
+        throwable.GetComponent<Rigidbody>().AddForce(transform.forward * _shootForce, ForceMode.Impulse);
+
+        StartCoroutine(WaitABit(throwable));
+    }
+
+    /// <summary>
+    /// Reenables gravity, colliders, and updates inventory UI
+    /// </summary>
+    /// <param name="thrw"></param>
+    /// <returns></returns>
+    private IEnumerator WaitABit(Collectable thrw)
+    {
+        thrw.GetComponent<Rigidbody>().useGravity = true;
+        yield return new WaitForSeconds(.5f);
+        thrw.GetComponent<Rigidbody>().excludeLayers = 0;
+        InventoryManager.Instance.UpdateVisuals();
     }
 
     /// <summary>
