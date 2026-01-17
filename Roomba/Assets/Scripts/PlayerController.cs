@@ -69,12 +69,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        //TO DO: check gameManager's selectionmanager to get selected status
-
-        if (SelectionManager.Instance.HasUISelected())
-        {
-            return;
-        }
+        //if (SelectionManager.Instance.HasUISelected())
+        //{
+        //    return;
+        //}
 
         _canMove = true;
         if (ctx.canceled)
