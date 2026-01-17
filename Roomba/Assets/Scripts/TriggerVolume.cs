@@ -49,7 +49,6 @@ public class TriggerVolume : MonoBehaviour
         float timePassed = 0f;
         while (timePassed < 3f)
         {
-            Debug.Log("Decrementing color");
             foreach (MeshRenderer r in renderers)
             {
                 if (r == null) continue;
@@ -59,9 +58,7 @@ public class TriggerVolume : MonoBehaviour
                 Color c = Color.Lerp(r.material.color, Color.clear, (timePassed/9f));
                 r.material.color = c;
             }
-            Debug.Log("made it past the first foreach");
             timePassed += 0.01f;
-            Debug.Log("timepassed = " + timePassed);
             yield return null;
             
             

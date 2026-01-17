@@ -620,6 +620,7 @@ Transform:
   - {fileID: 4126532462517100358}
   - {fileID: 4779788081442199945}
   - {fileID: 6585221618480275888}
+  - {fileID: 1354448052616822954}
   - {fileID: 6352708962441986935}
   - {fileID: 6596848608850944603}
   - {fileID: 8810430883096479617}
@@ -767,16 +768,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73de27ccd7273a4dbb348e91fcfea12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 6552284775229859566}
   _rotateSpeed: 145
   _movementSpeed: 18
-  _northYRotation: 45
+  _northYRotation: -45
   _shootForce: 3
   _launchPoint: {fileID: 4779788081442199945}
   _screen: {fileID: 4210222698794713331}
   _hasBattery: 0
   _hasBandAid: 0
-  _brokenModel: {fileID: 0}
-  _fixedModel: {fileID: 0}
+  _brokenModel: {fileID: 5776069384448326410}
+  _fixedModel: {fileID: 1837512626154920464}
 --- !u!54 &5916352405622716545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -804,3 +806,94 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1531591310380590913
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4529565759880632973}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.284649
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfbc4d9d5053d08438dbced341dee376, type: 2}
+    - target: {fileID: 919132149155446097, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_Name
+      value: Roomba_V5_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+--- !u!4 &1354448052616822954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+  m_PrefabInstance: {fileID: 1531591310380590913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1837512626154920464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bdec165251683b74295bf33bf405d91a, type: 3}
+  m_PrefabInstance: {fileID: 1531591310380590913}
+  m_PrefabAsset: {fileID: 0}
