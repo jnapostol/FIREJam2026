@@ -1,12 +1,15 @@
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] CinemachineVirtualCameraBase cam;
+
+    private void OnTriggerEnter(Collider other)
     {
         
     }
 
-    
+
 }
