@@ -60,23 +60,4 @@ public class PlayerController : MonoBehaviour
 
         _movementVector = ctx.ReadValue<Vector2>();        
     }
-
-    private void OnEnable()
-    {
-        EnableInput();
-    }
-    private void OnDisable()
-    {
-        DisableInput();
-    }
-
-    public void EnableInput()
-    {
-
-    }
-
-    public void DisableInput()
-    {
-
-    }
 }
