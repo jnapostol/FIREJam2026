@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [Header("Broken State Stuff")]
     bool _isBroken = true;
     [SerializeField] GameObject _screen;
+    [SerializeField] bool _hasBattery;
+    [SerializeField] bool _hasBandAid;
+    [SerializeField] GameObject _brokenModel;
+    [SerializeField] GameObject _fixedModel;
     Coroutine _flickerCoroutine;
 
     
@@ -102,5 +106,11 @@ public class PlayerController : MonoBehaviour
     void FixRobot()
     {
         StopCoroutine(_flickerCoroutine);
+        if (_brokenModel != null && _fixedModel != null)
+        {
+            _brokenModel.SetActive(false);
+            _fixedModel.SetActive(true);
+
+        }
     }
 }
