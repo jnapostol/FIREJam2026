@@ -8,27 +8,23 @@ public class Collectable : MonoBehaviour
     [SerializeField] private bool _isCollectable;
     [SerializeField] private bool _isShootable;
     [SerializeField] private bool _isAttachable;
-    [SerializeField] private GameObject _shootablePrefab;
     
     private bool _isAttached;
     private MeshRenderer _mesh;
     private Collider _col;
+    private Rigidbody _rb;
 
     private void Awake()
     {
         _mesh = GetComponent<MeshRenderer>();
         _col = GetComponent<Collider>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(PLAYER))
         {
-            if (_isShootable)
-            {
-                AddToInventory();
-            }
-
             if (_isAttachable)
             {
                 if (_isAttached)
@@ -49,16 +45,28 @@ public class Collectable : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag(PLAYER))
+        {
+            if (_isShootable)
+            {
+                AddToInventory();
+            }
+
+            if (_isCollectable)
+            {
+                DestroySelf();
+            }
+        }
+    }
+
     /// <summary>
     /// Adds shootable collectable to InventoryManager stack
     /// </summary>
     private void AddToInventory()
     {
-        if (_shootablePrefab != null)
-        {
-            // TODO: add shootable prefab to the inventory
-            
-        }
+        InventoryManager.Instance.AddToThrowables(this);
     }
 
     /// <summary>
@@ -66,7 +74,7 @@ public class Collectable : MonoBehaviour
     /// </summary>
     private void SendAttachment()
     {
-        InventoryManager.Instance.SetCurrentAttachment(this.gameObject);
+        InventoryManager.Instance.SetCurrentAttachment(this);
     }
 
     /// <summary>
@@ -79,10 +87,15 @@ public class Collectable : MonoBehaviour
             _isCollectable = false;
             return;
         }
-        _mesh.enabled = false;
+
+        if(_isShootable)
+        {
+            return;
+        }
+         _mesh.enabled = false;
         _col.enabled = false;
         StartCoroutine(WaitABit());
-        Destroy(this.gameObject);
+        
     }
 
     /// <summary>
@@ -91,6 +104,7 @@ public class Collectable : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitABit()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.8f);
+        Destroy(this.gameObject);
     }
 }
