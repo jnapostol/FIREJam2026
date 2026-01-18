@@ -10617,7 +10617,7 @@ MonoBehaviour:
   _northYRotation: -45
   _shootForce: 3
   _launchPoint: {fileID: 4779788081442199945}
-  _smokeBurstFX: {fileID: 6773845106768224041}
+  _smokeBurstFX: {fileID: 1066017377732714250}
   _smokeMovementFX: {fileID: 2651462467329312840}
   _smokeCollideFX: {fileID: 257568483951168521}
   _screen: {fileID: 4210222698794713331}
@@ -10820,6 +10820,10 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1004397833590601670, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4578998602956783548, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.671063
@@ -10878,21 +10882,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6717857261173094373, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
+--- !u!198 &1066017377732714250 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1004397833590601670, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
+  m_PrefabInstance: {fileID: 232805825195813068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4373216592810448752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4578998602956783548, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
-  m_PrefabInstance: {fileID: 232805825195813068}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6773845106768224041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6717857261173094373, guid: 96e207a50269fdf408e2d9c2edd84e4a, type: 3}
   m_PrefabInstance: {fileID: 232805825195813068}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &697949842302062590
