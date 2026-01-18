@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _northYRotation;
     [SerializeField] float _shootForce;
     [SerializeField] Transform _launchPoint;
+    [SerializeField] GameObject _smokeBurstFX;
 
     Rigidbody _rb;
 
@@ -205,6 +206,7 @@ public class PlayerController : MonoBehaviour
         {
             _brokenModel.SetActive(false);
             _fixedModel.SetActive(true);
+            _smokeBurstFX.SetActive(true);
             if (_hasBandAid && _hasBattery)
             {
                 _animator.Play("Happy");
