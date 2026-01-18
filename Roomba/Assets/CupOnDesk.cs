@@ -23,5 +23,6 @@ public class CupOnDesk : MonoBehaviour
     IEnumerator TurnOnGrabRuler()
     {
         yield return new WaitForSeconds(1.5f);
+        _turnOnGrabRuler.SetActive(true);
     }
 }
