@@ -50,7 +50,6 @@ public class SelectionManager : MonoBehaviour
     public void OnPrevious(InputAction.CallbackContext ctx)
     {
         // Deselect current smart obj
-        Debug.Log("Previous");
         if (ctx.performed)
         {
             _currentSmartObject.SetSelected(false);
@@ -76,7 +75,6 @@ public class SelectionManager : MonoBehaviour
     public void OnNext(InputAction.CallbackContext ctx)
     {
         // Deselect current smart obj
-        Debug.Log("Next");
         if (ctx.performed)
         {
             _currentSmartObject.SetSelected(false);

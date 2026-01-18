@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         SetBatteryTrue();
         StopCoroutine(_flickerCoroutine);
+        _screen.SetActive(true);
         StartCoroutine(ShowFullBattery());
     }
 

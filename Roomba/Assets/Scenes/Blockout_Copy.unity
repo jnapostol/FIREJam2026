@@ -490,7 +490,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a6af497bd76c3d146b1c3ec63a031fb9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1017420449}
   m_SourcePrefab: {fileID: 100100000, guid: a6af497bd76c3d146b1c3ec63a031fb9, type: 3}
 --- !u!4 &255887379 stripped
 Transform:
@@ -1955,6 +1958,11 @@ MonoBehaviour:
   _currentAttachment: {fileID: 0}
   _attachmentPoint: {fileID: 686491412}
   _spawnpoint: {fileID: 686491413}
+--- !u!1 &840432739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7675341576172035994, guid: 3073efea52a6dfb458faf20ba121bebb, type: 3}
+  m_PrefabInstance: {fileID: 686491411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &856055991
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2400,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1222329394}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onDeselect:
     m_PersistentCalls:
       m_Calls:
@@ -2399,6 +2419,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SmartObject, Assembly-CSharp
         m_MethodName: ToggleOutline
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1222329394}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2737,11 +2769,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014135646}
   m_CullTransparentMesh: 1
+--- !u!1 &1017420446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a6af497bd76c3d146b1c3ec63a031fb9, type: 3}
+  m_PrefabInstance: {fileID: 255887378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1017420447 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a6af497bd76c3d146b1c3ec63a031fb9, type: 3}
   m_PrefabInstance: {fileID: 255887378}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1017420449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017420446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb601ebf01dd394b8c1d79bdf2db360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1034315945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1268116159190855154, guid: 5f2a322d10e4bab4d974fc2af052bdcc, type: 3}
@@ -3032,7 +3081,19 @@ MonoBehaviour:
   _anim: {fileID: 0}
   OnPress:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1017420449}
+        m_TargetAssemblyTypeName: Rotator, Assembly-CSharp
+        m_MethodName: ToggleRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1305162658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2485056525759212529, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
@@ -3339,6 +3400,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7448672880691429124, guid: 3f74fa5535d712f4499a5d6ff1a244fc, type: 3}
   m_PrefabInstance: {fileID: 1585292838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1615623121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 229359830052112807, guid: 3073efea52a6dfb458faf20ba121bebb, type: 3}
+  m_PrefabInstance: {fileID: 686491411}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628302683
 GameObject:
@@ -4578,11 +4644,23 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
@@ -4604,7 +4682,23 @@ PrefabInstance:
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
+      objectReference: {fileID: 1615623121}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 840432739}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
       objectReference: {fileID: 1305162658}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NotifyPickUpBandaid
@@ -4626,12 +4720,36 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 522140034657142124, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
+      propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1114221199955432671, guid: c1c7dae799560824a8a4aa70ed6e0a2b, type: 3}
       propertyPath: OnPlayerOverlap.m_PersistentCalls.m_Calls.Array.data[0].m_Target
