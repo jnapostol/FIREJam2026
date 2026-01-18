@@ -9,7 +9,7 @@ public class Temporary_Input : MonoBehaviour
     bool _animToggled = false;
     public UnityEvent OnPress;
     
-    private void FixedUpdate()
+    private void Update()
     {
         if (Gamepad.current.buttonSouth.wasPressedThisFrame)
         {

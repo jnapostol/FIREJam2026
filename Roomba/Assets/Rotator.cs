@@ -10,13 +10,15 @@ public class Rotator : MonoBehaviour
     }
     public void ToggleRotate()
     {
+        Debug.Log("ToggleRotate");
         if (_isRotating)
         {
             _isRotating = false;
-            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
         } else
         {
             _isRotating = true;
+            transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
