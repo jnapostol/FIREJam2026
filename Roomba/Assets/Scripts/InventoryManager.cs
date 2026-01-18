@@ -27,7 +27,7 @@ public class InventoryManager : MonoBehaviour
         throwable.gameObject.layer = 8;
         throwable.GetComponent<Rigidbody>().useGravity = false;
         _throwables.Push(throwable);
-        Vector3 newPos = new Vector3 (_spawnpoint.transform.position.x, _spawnpoint.transform.position.y - 1.5f * _throwables.Count, _spawnpoint.transform.position.z);
+        Vector3 newPos = new Vector3 (_spawnpoint.transform.position.x, _spawnpoint.transform.position.y - 0.5f * _throwables.Count, _spawnpoint.transform.position.z);
         throwable.GetComponent<Rigidbody>().excludeLayers = _throwableMask;
         throwable.transform.position = newPos;
         throwable.transform.rotation = Quaternion.identity;
@@ -77,7 +77,7 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 2; i < _throwables.Count; i++)
         {
-            throwArr[i].gameObject.transform.position = new Vector3(throwArr[i].gameObject.transform.position.x, _spawnpoint.transform.position.y + 1.5f * throwArr.Length, throwArr[i].gameObject.transform.position.z);
+            throwArr[i].gameObject.transform.position = new Vector3(throwArr[i].gameObject.transform.position.x, _spawnpoint.transform.position.y + 0.5f * throwArr.Length, throwArr[i].gameObject.transform.position.z);
         }
     }
 

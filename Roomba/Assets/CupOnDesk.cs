@@ -15,6 +15,7 @@ public class CupOnDesk : MonoBehaviour
     {
         if (other.gameObject.name == "RacketInPlace")
         {
+            AudioManager.Instance.PlayResource(8);
             _anim.Play("CupFallOffDesk");
             StartCoroutine(TurnOnGrabRuler());
         }

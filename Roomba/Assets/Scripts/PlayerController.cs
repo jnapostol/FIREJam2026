@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _northYRotation;
     [SerializeField] float _shootForce;
     [SerializeField] Transform _launchPoint;
-    [SerializeField] ParticleSystem _smokeBurstFX;
+    [SerializeField] GameObject _smokeBurstFX;
     [SerializeField] GameObject _smokeMovementFX;
     [SerializeField] GameObject _smokeCollideFX;
 
     float minImpactSpeed = 0.5f;
     bool _recentHurt = false;
     Rigidbody _rb;
-    string requiredTag = "collectable";
+
 
 
     bool _canMove = false;
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _playerMask = LayerMask.GetMask("Player");
+        AudioManager.Instance.PlayResource(0);
     }
 
     // Update is called once per frame
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
         // Pop throwable from stack then throw it
         Collectable throwable = InventoryManager.Instance.PopThrowable();
         throwable.GetComponent<Rigidbody>().excludeLayers = _playerMask;
-        AudioManager.Instance.PlayResource(7);
+        AudioManager.Instance.PlayResource(8);
         throwable.transform.position = _launchPoint.transform.position;
         throwable.GetComponent<Rigidbody>().AddForce(transform.forward * _shootForce, ForceMode.Impulse);
 
@@ -170,6 +171,7 @@ public class PlayerController : MonoBehaviour
     public void GiveBatteryToRobot()
     {
         SetBatteryTrue();
+        AudioManager.Instance.PlayResource(2);
         _electricityFX.SetActive(true);
         StopCoroutine(_flickerCoroutine);
         _screen.SetActive(true);
@@ -212,10 +214,10 @@ public class PlayerController : MonoBehaviour
     {
         if (_brokenModel != null && _fixedModel != null)
         {
+            AudioManager.Instance.PlayResource(1);
             _brokenModel.SetActive(false);
             _fixedModel.SetActive(true);
-            _smokeBurstFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            _smokeBurstFX.Play();
+            _smokeBurstFX.SetActive(true);
             if (_hasBandAid && _hasBattery)
             {
                 _animator.Play("Happy");
@@ -227,17 +229,16 @@ public class PlayerController : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         float speed = _rb.linearVelocity.magnitude;
-        //Debug.Log("speed = " + speed);
-        //Debug.Log("min = " + minImpactSpeed);
+        Debug.Log("speed = " + speed);
+        Debug.Log("min = " + minImpactSpeed);
         
-        // collide with walls ============================================================>
         if (speed < minImpactSpeed)
         {
-            //Debug.Log("NotFastEnough");
+            Debug.Log("NotFastEnough");
             return;
         }
         
-       // Debug.Log("Entered");
+        Debug.Log("Entered");
         _animator.Play("Closed_Eyes");
         _recentHurt = true;
         
@@ -246,15 +247,6 @@ public class PlayerController : MonoBehaviour
         GameObject vfx = Instantiate(_smokeCollideFX, contactPoint.point, rotation);
         vfx.SetActive(true);
         Destroy(vfx.gameObject, 2f);
-        
-        // collide with walls ============================================================>
-
-        
-        if (collision.gameObject.CompareTag(requiredTag)){
-            _smokeBurstFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            _smokeBurstFX.Play();
-        }
-
     }
     
     public void OnCollisionExit(Collision collision)
