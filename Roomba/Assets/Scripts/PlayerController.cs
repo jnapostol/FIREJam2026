@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _shootForce;
     [SerializeField] Transform _launchPoint;
     [SerializeField] GameObject _smokeBurstFX;
+    [SerializeField] GameObject _smokeMovementFX;
 
     Rigidbody _rb;
 
@@ -193,6 +194,7 @@ public class PlayerController : MonoBehaviour
             if (_hasBandAid)
             {
                 _animator.Play("Happy");
+                _smokeMovementFX.SetActive(true);
             }
             else
             {
@@ -212,6 +214,7 @@ public class PlayerController : MonoBehaviour
             if (_hasBandAid && _hasBattery)
             {
                 _animator.Play("Happy");
+                _smokeMovementFX.SetActive(true);
             }
         }
     }
