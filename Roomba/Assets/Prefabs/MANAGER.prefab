@@ -218,6 +218,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d0ab9fea048b2b04388d9ff4daf30f87, type: 3}
   - {fileID: 8300000, guid: ee0ad4f807a5acd48ab6826c8d42cf72, type: 3}
   - {fileID: 6418180475301049370, guid: 6162d7b755c47444ebf78c233f0502b8, type: 2}
+  - {fileID: 8300000, guid: 21b0074bebff92f419907657b3e2a5de, type: 3}
+  - {fileID: 8300000, guid: 0f8475f7707b4eb49b5eee7d3a1f9a82, type: 3}
+  - {fileID: 8300000, guid: 49f6cd7df6ebf4a46a2e96d26c142506, type: 3}
   MusicClips: []
 --- !u!1 &3223234094971699010
 GameObject:

@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _playerMask = LayerMask.GetMask("Player");
+        AudioManager.Instance.PlayResource(0);
     }
 
     // Update is called once per frame
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
         // Pop throwable from stack then throw it
         Collectable throwable = InventoryManager.Instance.PopThrowable();
         throwable.GetComponent<Rigidbody>().excludeLayers = _playerMask;
+        AudioManager.Instance.PlayResource(8);
         throwable.transform.position = _launchPoint.transform.position;
         throwable.GetComponent<Rigidbody>().AddForce(transform.forward * _shootForce, ForceMode.Impulse);
 
@@ -169,6 +171,7 @@ public class PlayerController : MonoBehaviour
     public void GiveBatteryToRobot()
     {
         SetBatteryTrue();
+        AudioManager.Instance.PlayResource(2);
         _electricityFX.SetActive(true);
         StopCoroutine(_flickerCoroutine);
         _screen.SetActive(true);
@@ -211,6 +214,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_brokenModel != null && _fixedModel != null)
         {
+            AudioManager.Instance.PlayResource(1);
             _brokenModel.SetActive(false);
             _fixedModel.SetActive(true);
             //_smokeBurstFX.SetActive(true);
