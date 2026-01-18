@@ -4920,7 +4920,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.000000059605, z: 0}
-  m_LocalScale: {x: 1.1282, y: 0.16545054, z: 1.1282}
+  m_LocalScale: {x: 1.0723542, y: 0.15726075, z: 1.0723542}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4529565759880632973}
@@ -10721,7 +10721,7 @@ MonoBehaviour:
         m_CallState: 2
   _arrow: {fileID: 5934261471892845407}
   _hasUI: 0
-  _renderer: {fileID: 8674992643734807413}
+  _renderer: {fileID: 5415654352257981151}
 --- !u!1001 &95232962175963231
 PrefabInstance:
   m_ObjectHideFlags: 0

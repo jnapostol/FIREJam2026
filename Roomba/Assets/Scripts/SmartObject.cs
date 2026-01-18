@@ -1,4 +1,5 @@
 using MoreMountains.Tools;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ public class SmartObject : MonoBehaviour
     [SerializeField] private bool _hasUI;
     [SerializeField] private Renderer _renderer;
     private bool _selected;
+    private Color _colorStart;
+    private Coroutine _lerpColor;
 
     private void Awake()
     {
@@ -18,6 +21,10 @@ public class SmartObject : MonoBehaviour
         if (_renderer == null)
         {
             _renderer = GetComponent<MeshRenderer>();
+        }
+        if (_arrow!= null)
+        {
+            _colorStart = _arrow.GetComponent<MeshRenderer>().material.color;
         }
         
     }
@@ -58,7 +65,7 @@ public class SmartObject : MonoBehaviour
         {
             // Turn on outline
             _arrow.SetActive(true);
-
+            _lerpColor = StartCoroutine(LerpArrowOpacity());
             if (_renderer.materials.Length == 1)
             {
                 _renderer.materials[0].SetFloat("_Scale", 1.1f);
@@ -72,6 +79,7 @@ public class SmartObject : MonoBehaviour
         {
             // Turn off outline
             _arrow.SetActive(false);
+            StopCoroutine(_lerpColor);
             if (_renderer.materials.Length == 1)
             {
                 _renderer.materials[0].SetFloat("_Scale", 0f);
@@ -81,5 +89,26 @@ public class SmartObject : MonoBehaviour
                 _renderer.materials[1].SetFloat("_Scale", 0f);
             }
         }
+    }
+
+    IEnumerator LerpArrowOpacity()
+    {
+        if (_arrow == null)
+        {
+            yield break;
+        }
+        Debug.Log("LerpArrowOpacity reached!");
+        MeshRenderer rend = _arrow.gameObject.GetComponent<MeshRenderer>();
+        float timePassed = 0;
+        //rend.material.color.a = 1f;
+        //Color startingColor = rend.material.color;
+        while (timePassed < 4f)
+        {
+            Color c = Color.Lerp(_colorStart, Color.clear, (timePassed / 4f));
+            rend.material.color = c;
+            yield return null;
+            timePassed += Time.deltaTime;
+        }
+        _arrow.SetActive(false);
     }
 }
