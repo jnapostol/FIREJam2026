@@ -4,6 +4,7 @@ public class Vase : MonoBehaviour
 {
     private Collider _col;
     private Animator _animator;
+    private bool _isBroken;
     private void Awake()
     {
         _col = GetComponent<Collider>();
@@ -15,12 +16,15 @@ public class Vase : MonoBehaviour
         if (collision.gameObject.name == "Baseball")
         {
             _animator.Play("Broken");
+            Destroy(collision.gameObject);
+            _isBroken = true;
         }
-
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && _isBroken)
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
+
+
     }
 }
