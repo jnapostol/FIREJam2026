@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         // Pop throwable from stack then throw it
         Collectable throwable = InventoryManager.Instance.PopThrowable();
         throwable.GetComponent<Rigidbody>().excludeLayers = _playerMask;
+        AudioManager.Instance.PlayResource(7);
         throwable.transform.position = _launchPoint.transform.position;
         throwable.GetComponent<Rigidbody>().AddForce(transform.forward * _shootForce, ForceMode.Impulse);
 

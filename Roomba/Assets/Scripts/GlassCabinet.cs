@@ -10,6 +10,7 @@ public class GlassCabinet : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Ice"))
         {
+            AudioManager.Instance.PlayResource(5);
             this.gameObject.GetComponent<Collider>().enabled = false;
             _brokenObj.SetActive(true);
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
