@@ -8,7 +8,7 @@ public class Fridge : MonoBehaviour
     public void CreateIce()
     {
         _ice.SetActive(true);
-        GameObject ice = Instantiate(_ice);
+        GameObject ice = Instantiate(_ice, _spawn.position, Quaternion.identity);
         ice.SetActive(true);
     }
 }
