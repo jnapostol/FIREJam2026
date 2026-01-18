@@ -1,19 +1,27 @@
+using System.Collections;
 using UnityEngine;
 
 public class CupOnDesk : MonoBehaviour
 {
-    Animator _anim;
+    [SerializeField] Animator _anim;
+    [SerializeField] GameObject _turnOnGrabRuler;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _anim = GetComponent<Animator>();
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "RacketInPlace")
         {
-            Debug.Log("Hit Cupd wonn beasttttt");
+            _anim.Play("CupFallOffDesk");
+            StartCoroutine(TurnOnGrabRuler());
         }
+    }
+
+    IEnumerator TurnOnGrabRuler()
+    {
+        yield return new WaitForSeconds(1.5f);
     }
 }

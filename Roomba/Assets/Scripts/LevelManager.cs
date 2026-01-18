@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator WaitToAttachRacket()
     {
-        yield return new WaitForSeconds(0.56f);
+        yield return new WaitForSeconds(0.97f);
         Racket.gameObject.SetActive(false);
         Racket2.localPosition = new Vector3(0.001587136f, 0.001864903f, -0.001941625f);
         Racket2.gameObject.SetActive(true);
