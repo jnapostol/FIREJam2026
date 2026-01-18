@@ -15,7 +15,11 @@ public class SmartObject : MonoBehaviour
     {
         if (this.gameObject.CompareTag("Player")) return;
         
-        _renderer = GetComponent<MeshRenderer>();
+        if (_renderer == null)
+        {
+            _renderer = GetComponent<MeshRenderer>();
+        }
+        
     }
  
     public bool HasUI() {  return _hasUI; }
