@@ -125,6 +125,7 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &263455519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,6 +305,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +440,7 @@ MonoBehaviour:
   m_TaaSettings:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_Quality: 3
     m_FrameInfluence: 0.1
     m_JitterScale: 1
@@ -527,6 +531,8 @@ PrefabInstance:
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     quality: 3
     frameInfluence: 0.1
     jitterScale: 1
@@ -534,6 +540,9 @@ PrefabInstance:
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -776,6 +785,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: f12ad04a8c242424489a4b5c0e49ed62, type: 3}
@@ -2613,6 +2623,9 @@ SceneRoots:
   - {fileID: 276988086}
   - {fileID: 1607535651}
   - {fileID: 8090982919907735620}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: ee59c090669404c4da6b94e48cb60cf1, type: 3}
+>>>>>>> Stashed changes
 =======
   m_SourcePrefab: {fileID: 100100000, guid: ee59c090669404c4da6b94e48cb60cf1, type: 3}
 >>>>>>> Stashed changes
