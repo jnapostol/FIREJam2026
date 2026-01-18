@@ -56,6 +56,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.collider.CompareTag(PLAYER))
         {
+            AudioManager.Instance.PlayResource(1);
             if (_isShootable)
             {
                 AddToInventory();

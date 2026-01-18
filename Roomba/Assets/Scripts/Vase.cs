@@ -15,6 +15,7 @@ public class Vase : MonoBehaviour
     {
         if (collision.gameObject.name == "Baseball")
         {
+            AudioManager.Instance.PlayResource(5);
             _animator.Play("Broken");
             Destroy(collision.gameObject);
             _isBroken = true;
