@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectionManager : MonoBehaviour
 {
-    // TODO: NEED TO CREATE PLAYER ACTION TO NAVIGATE UI INTERFACE
-
     [SerializeField] private SmartObject _currentSmartObject;
     [SerializeField] private List<SmartObject> _selectableSmartObjects;
     [SerializeField] private int _index = 0;
-
+    private PlayerInput _input;
+    public static SelectionManager Instance;
     private void Start()
     {
+        _input = GetComponent<PlayerInput>();
         // Select the first obj in the smart obj list
         _currentSmartObject = _selectableSmartObjects[_index];
         _currentSmartObject.SetSelected(true);
@@ -29,13 +30,20 @@ public class SelectionManager : MonoBehaviour
         _index = index;
     }
 
+    public bool HasUISelected()
+    {
+        if (_currentSmartObject != null)
+        {
+            return _currentSmartObject.HasUI();
+        }
+        return false;
+    }
+
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    void OnPrevious()
+    public void OnPrevious()
     {
-        Debug.Log("Previous");
-
         // Deselect current smart obj
         _currentSmartObject.SetSelected(false);
         _currentSmartObject.OnDeselected();
@@ -55,10 +63,8 @@ public class SelectionManager : MonoBehaviour
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    void OnNext()
+    public void OnNext()
     {
-        Debug.Log("Next");
-
         // Deselect current smart obj
         _currentSmartObject.SetSelected(false);
         _currentSmartObject.OnDeselected();

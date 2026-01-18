@@ -14,11 +14,17 @@ public class Collectable : MonoBehaviour
     private Collider _col;
     private Rigidbody _rb;
 
+    public void IsCollectable(bool value)
+    {
+        _isCollectable = value;
+    }
+
     private void Awake()
     {
         _mesh = GetComponent<MeshRenderer>();
         _col = GetComponent<Collider>();
-        _rb = GetComponent<Rigidbody>();
+
+        if (_rb != null ) _rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,6 +40,7 @@ public class Collectable : MonoBehaviour
                 else
                 {
                     _isAttached = true;
+                    _col.isTrigger = false;
                     SendAttachment();
                 }
             }
