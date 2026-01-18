@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool _hasBandAid;
     [SerializeField] GameObject _brokenModel;
     [SerializeField] GameObject _fixedModel;
+    [SerializeField] GameObject _electricityFX;
     Coroutine _flickerCoroutine;
     private LayerMask _playerMask;
 
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
     public void GiveBatteryToRobot()
     {
         SetBatteryTrue();
+        _electricityFX.SetActive(true);
         StopCoroutine(_flickerCoroutine);
         _screen.SetActive(true);
         StartCoroutine(ShowFullBattery());
