@@ -17,7 +17,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _shootForce;
     [SerializeField] Transform _launchPoint;
     [SerializeField] GameObject _smokeBurstFX;
+    [SerializeField] GameObject _smokeMovementFX;
+    [SerializeField] GameObject _smokeCollideFX;
 
+    float minImpactSpeed = 0.5f;
+    bool _recentHurt = false;
     Rigidbody _rb;
 
 
@@ -193,6 +197,7 @@ public class PlayerController : MonoBehaviour
             if (_hasBandAid)
             {
                 _animator.Play("Happy");
+                _smokeMovementFX.SetActive(true);
             }
             else
             {
@@ -212,7 +217,45 @@ public class PlayerController : MonoBehaviour
             if (_hasBandAid && _hasBattery)
             {
                 _animator.Play("Happy");
+                _smokeMovementFX.SetActive(true);
             }
         }
     }
+    
+    public void OnCollisionEnter(Collision collision)
+    {
+        float speed = _rb.linearVelocity.magnitude;
+        Debug.Log("speed = " + speed);
+        Debug.Log("min = " + minImpactSpeed);
+        
+        if (speed < minImpactSpeed)
+        {
+            Debug.Log("NotFastEnough");
+            return;
+        }
+        
+        Debug.Log("Entered");
+        _animator.Play("Closed_Eyes");
+        _recentHurt = true;
+        
+        ContactPoint contactPoint = collision.GetContact(0);
+        Quaternion rotation = Quaternion.LookRotation(contactPoint.normal);
+        GameObject vfx = Instantiate(_smokeCollideFX, contactPoint.point, rotation);
+        vfx.SetActive(true);
+        Destroy(vfx.gameObject, 2f);
+    }
+    
+    public void OnCollisionExit(Collision collision)
+    {
+        if(_recentHurt == true && _hasBandAid && _hasBattery)
+        {
+            _animator.Play("Idle");
+        }
+        else if(_recentHurt == true)
+        {
+            _animator.Play("Sad");
+        }
+
+    }
+
 }
