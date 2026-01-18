@@ -9,6 +9,10 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private int _index = 0;
     private PlayerInput _input;
     public static SelectionManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         _input = GetComponent<PlayerInput>();
@@ -28,6 +32,7 @@ public class SelectionManager : MonoBehaviour
         _selectableSmartObjects.Clear();
         _selectableSmartObjects = newSmartObjs;
         _index = index;
+        _currentSmartObject = _selectableSmartObjects[index];
     }
 
     public bool HasUISelected()
@@ -42,42 +47,57 @@ public class SelectionManager : MonoBehaviour
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    public void OnPrevious()
+    public void OnPrevious(InputAction.CallbackContext ctx)
     {
         // Deselect current smart obj
-        _currentSmartObject.SetSelected(false);
-        _currentSmartObject.OnDeselected();
-        --_index;
-
-        if (_index < 0)
+        Debug.Log("Previous");
+        if (ctx.performed)
         {
-            _index = _selectableSmartObjects.Count-1;
-        }
+            _currentSmartObject.SetSelected(false);
+            _currentSmartObject.OnDeselected();
+            --_index;
 
-        // Select next smart obj in list
-        _currentSmartObject = _selectableSmartObjects[_index];
-        _currentSmartObject.SetSelected(true);
-        _currentSmartObject.OnSelected();
+            if (_index < 0)
+            {
+                _index = _selectableSmartObjects.Count - 1;
+            }
+
+            // Select next smart obj in list
+            _currentSmartObject = _selectableSmartObjects[_index];
+            _currentSmartObject.SetSelected(true);
+            _currentSmartObject.OnSelected();
+        }
+        
     }
 
     /// <summary>
     /// Called by InputAction Map
     /// </summary>
-    public void OnNext()
+    public void OnNext(InputAction.CallbackContext ctx)
     {
         // Deselect current smart obj
-        _currentSmartObject.SetSelected(false);
-        _currentSmartObject.OnDeselected();
-        ++_index;
-
-        if(_index > _selectableSmartObjects.Count - 1)
+        Debug.Log("Next");
+        if (ctx.performed)
         {
-            _index = 0;
-        }
+            _currentSmartObject.SetSelected(false);
+            _currentSmartObject.OnDeselected();
+            ++_index;
 
-        // Select next smart obj in list
-        _currentSmartObject = _selectableSmartObjects[_index];
-        _currentSmartObject.SetSelected(true);
-        _currentSmartObject.OnSelected();
+            if (_index > _selectableSmartObjects.Count - 1)
+            {
+                _index = 0;
+            }
+
+            // Select next smart obj in list
+            _currentSmartObject = _selectableSmartObjects[_index];
+            _currentSmartObject.SetSelected(true);
+            _currentSmartObject.OnSelected();
+        }
+        
+    }
+
+    public SmartObject GetCurrentSmartObject()
+    {
+        return _currentSmartObject;
     }
 }

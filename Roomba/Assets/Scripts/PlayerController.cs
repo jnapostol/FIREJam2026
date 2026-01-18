@@ -72,12 +72,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        //if (SelectionManager.Instance.HasUISelected())
-        //{
-        //    return;
-        //}
-
         _canMove = true;
+        if (SelectionManager.Instance.GetCurrentSmartObject().gameObject.CompareTag("Player") == false)
+        {
+            _canMove = false;
+            return;
+        }
+
+        
         if (ctx.canceled)
         {
             _canMove = false;

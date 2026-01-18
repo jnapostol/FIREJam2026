@@ -10,7 +10,8 @@ public class TriggerVolume : MonoBehaviour
 {
     public UnityEvent OnPlayerOverlap;
     bool _isTriggered = false;
-
+    public List<SmartObject> RoomSmartObjects = new List<SmartObject>();
+    //[SerializeField] bool _isNewRoom;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && _isTriggered == false) //if player enters
@@ -37,10 +38,6 @@ public class TriggerVolume : MonoBehaviour
         }
 
         renderers.AddRange(obj.GetComponentsInChildren<MeshRenderer>());
-        foreach (MeshRenderer r in renderers)
-        {
-            Debug.Log(r.gameObject.name);
-        }
         StartCoroutine(FadeOut(renderers));
     }
 
@@ -69,5 +66,11 @@ public class TriggerVolume : MonoBehaviour
         {
             r.gameObject.SetActive(false) ;
         }
+    }
+
+
+    public void RepopulateSmartObjs()
+    {
+        SelectionManager.Instance.RepopulateSmartObjects(RoomSmartObjects, 0);
     }
 }
