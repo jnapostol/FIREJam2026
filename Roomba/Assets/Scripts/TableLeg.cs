@@ -7,7 +7,9 @@ public class TableLeg : MonoBehaviour
     public GameObject Sword;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Sword") && _hasPlayed == false)
+        Debug.Log("Table oncollisionenter called");
+        Debug.Log($"{collision.gameObject.name}, _hasPlayed = {_hasPlayed}");
+        if (collision.gameObject.name.Contains("Player") && _hasPlayed == false && Sword.activeInHierarchy)
         {
             _anim.Play("Fall");
             //InventoryManager.Instance.RemoveCurrentAttachment();
