@@ -250,12 +250,23 @@ public class PlayerController : MonoBehaviour
         vfx.SetActive(true);
         Destroy(vfx.gameObject, 2f);
 
+/*
         if (collision.gameObject.CompareTag(requiredTag)){
             _smokeBurstFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             _smokeBurstFX.Play();
         }
+        */
 
     }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag(requiredTag)){
+            _smokeBurstFX.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            _smokeBurstFX.Play();
+        }
+    }
+
     
     public void OnCollisionExit(Collision collision)
     {
