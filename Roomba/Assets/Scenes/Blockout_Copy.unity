@@ -6043,6 +6043,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3725704917132563605, guid: 46a3d569201495e41bbccac3601e47ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686514407331400294, guid: 46a3d569201495e41bbccac3601e47ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.018
+      objectReference: {fileID: 0}
     - target: {fileID: 6284347701779615017, guid: 46a3d569201495e41bbccac3601e47ee, type: 3}
       propertyPath: m_Name
       value: Hallway
