@@ -1,26 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource _sfxSource;
-    private AudioSource _musicSource;
+    [SerializeField]private AudioSource _sfxSource;
+    [SerializeField]private AudioSource _musicSource;
 
-    public List<AudioClip> SFXClips;
+    public List<AudioResource> SFXClips;
     public List<AudioClip> MusicClips;
 
     public static AudioManager Instance;
     private void Awake()
     {
-        _sfxSource = GetComponent<AudioSource>();
-        _musicSource = GetComponent<AudioSource>();
-
         Instance = this;
     }
 
-    public void PlayOneShotSFX(int index)
+    public void PlayResource(int index)
     {
-        _sfxSource.PlayOneShot(SFXClips[index]);
+        _sfxSource.resource = SFXClips[index];
+        _sfxSource.Play();
     }
 
 
