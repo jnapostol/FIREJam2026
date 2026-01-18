@@ -8,12 +8,11 @@ public class GlassCabinet : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ice")
+        if (collision.gameObject.name == "Ice(Clone)")
         {
             this.gameObject.GetComponent<Collider>().enabled = false;
             _brokenObj.SetActive(true);
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            _anim.Play("Break");
             _swordAnim.Play("Fall");
         }
     }
