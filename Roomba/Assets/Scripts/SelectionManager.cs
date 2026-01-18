@@ -52,6 +52,7 @@ public class SelectionManager : MonoBehaviour
         // Deselect current smart obj
         if (ctx.performed)
         {
+            AudioManager.Instance.PlayResource(6);
             _currentSmartObject.SetSelected(false);
             _currentSmartObject.OnDeselected();
             --_index;
@@ -77,6 +78,7 @@ public class SelectionManager : MonoBehaviour
         // Deselect current smart obj
         if (ctx.performed)
         {
+            AudioManager.Instance.PlayResource(6);
             _currentSmartObject.SetSelected(false);
             _currentSmartObject.OnDeselected();
             ++_index;
